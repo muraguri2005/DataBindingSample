@@ -2,7 +2,7 @@ package org.freelesson.databindingsample;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import org.freelesson.databindingsample.data.SimpleViewModel;
@@ -14,7 +14,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewModel = ViewModelProviders.of(this).get(SimpleViewModel.class);
+        ViewModelProvider viewModelProvider = new ViewModelProvider(this);
+        viewModel = viewModelProvider.get(SimpleViewModel.class);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
 
         binding.setViewModel(viewModel);
